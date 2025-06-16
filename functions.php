@@ -15,14 +15,18 @@ function get_data($dbconnect, $more_condition=null) {
 	$find_sql = "SELECT 
 		fish.*, 
 		c1.Color AS color1, 
-		c2.Color AS color2
+		c2.Color AS color2,
+		n.Native AS `native`
+
 		FROM fish
 		JOIN colors AS c1 ON fish.mainColor1_ID = c1.Color_ID
-		JOIN colors AS c2 ON fish.mainColor2_ID = c2.Color_ID;
+		JOIN colors AS c2 ON fish.mainColor2_ID = c2.Color_ID
+		JOIN `native` AS n ON fish.native_ID = n.Native_ID
+
 ";
 
 	if ($more_condition) {
-		$find_sql .= $more_condition;
+		$find_sql .= $more_condition.";";
 		echo "<span style='background-color:red;'>".$find_sql."</span>";
 	}
 	// Add extra string onto find sql
@@ -32,6 +36,23 @@ function get_data($dbconnect, $more_condition=null) {
 	return array($find_query, $find_count);
 }
 
+
+// entity is subject / full name of author
+function autocomplete_list($dbconnect, $item_sql, $entity) {
+// Get entity / topic list from database
+$all_items_query = mysqli_query($dbconnect, $item_sql);
+    
+// Make item arrays for autocomplete functionality...
+while($row=mysqli_fetch_array($all_items_query))
+{
+  $item=$row[$entity];
+  $items[] = $item;
+}
+
+$all_items=json_encode($items);
+return $all_items;
+    
+}
 
 ?>
 <script>
