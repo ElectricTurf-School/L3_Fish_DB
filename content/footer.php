@@ -1,0 +1,1 @@
+<div class="box footer">CC Daniel Holmes 2025</div>    <!-- / footer -->

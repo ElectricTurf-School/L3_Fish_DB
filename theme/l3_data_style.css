@@ -1,0 +1,277 @@
+body {
+    margin: auto;
+    color: #000;
+    font-family: 'Lato', sans-serif;
+}
+
+
+html, body {
+    height: 100%;
+    margin: 0;
+}
+/* Box (for corners & padding) */
+.box {
+    padding: 5px;
+    /* border-radius: 10px; */
+    background-color: #ddd;
+}
+
+
+/* Set up grids... specifics */
+
+/*  #### Grid for Main page #### */
+
+
+.wrapper {
+    display: grid;
+    grid-template-columns: 300px 1fr;
+    grid-template-rows: 100px 1fr 30px;
+    grid-template-areas:
+        "banner nav"
+        "main main"
+        "footer footer";
+    grid-gap: 4px;
+
+    height: 100vh; 
+    overflow: hidden;
+}
+
+.banner {
+    grid-area: banner;
+}
+
+
+
+/* Structure */
+
+.nav {
+    grid-area: nav;
+    background-color: #099A86;  /* silver */
+    font-size: 150%;
+    padding: 20px;
+    vertical-align: middle;
+    border: solid 1px;
+    padding-bottom: 0px;
+}
+
+.main {
+    position: relative;
+    overflow: hidden; /* Prevent image from spilling outside */
+    grid-area: main;
+    background: url(../images/Topback.jpg);
+    background-size: 340px;
+    height: 100%;
+    overflow: auto;
+}
+
+.main-img-wrapper {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 0; /* Stays behind content */
+}
+
+.main-bg-img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+
+/* MAIN RESULTS */
+
+.results {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(550px, 2fr));
+    grid-auto-rows: auto;
+    gap: 35px;
+    opacity: 90%;
+    padding: 15px;
+}
+
+
+.result {
+    background: radial-gradient(#b4b3ffde, #d3d2ffde, #ffffffb0);    width: 100%;
+    height: 250px;
+    display: grid;
+    grid-template-columns: 130px 1fr;
+    grid-template-rows: 130px 20px 90px;
+    grid-gap: 5px;
+    grid-template-areas: 
+    "thumb description-box"
+    "name name"
+    "sci-name lifetime";
+    border-radius: 10px;
+    filter: drop-shadow(2px 4px 6px black);
+    border: white solid 1px;
+}
+.arrow {
+    grid-area: lifetime;
+}
+
+.category {
+    font-size: 10px;
+    top: 110px;
+    border-radius: 2px;
+    padding: 1px;
+}
+
+.category_button {
+    font-size: 10px;
+}
+
+.category:hover {
+    background: linear-gradient(transparent, transparent, #ffffff9c);}
+
+.footer {
+    grid-area: footer;
+    text-align: right;
+    padding: 20px;
+    background: #375a63;
+    
+}
+
+.fish-icon {
+    mask-image: url(https://projectspace.nz/amyxrilg/DTI301/L3_Fish_DB/images/Fish_Icon.svg);
+    mask-repeat: no-repeat;
+    mask-size: contain;
+    mask-position: center;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+/*  #### Grid for Navigation area page #### */
+
+.linkwrapper {
+    display: grid;
+    grid-template-columns: 3fr 2fr 1fr;
+    grid-template-areas: 
+        "commonsearches topsearch topadmin";
+    grid-gap: 4px;
+}
+
+
+.commonsearches {
+    grid-area: commonsearches;
+    text-align: center;
+}
+
+.topsearch {
+    grid-area: topsearch;
+    text-align: right;
+}
+
+.add_box {
+    width: 300px;
+    border: 3px solid;
+    border-radius: 5px;
+    background: #f0ffffeb;
+}
+.topadmin {
+    grid-area: topadmin;
+    text-align: center;
+}
+
+/* ### Additional div styling (put colours / corners here) */
+
+
+/* Area colouring... */
+
+/* logo, banner and footer background are the same */
+.logo, .banner, .footer {
+    background-color: #888;  /* dark grey */
+}
+
+/* Set font on dark areas to white */
+.logo, .banner, .side, .footer {
+    color: #fff;
+}
+
+/* #### Links Styling  #### */
+
+/* Navigation Links */
+a.topnav {font-weight: bold;}
+a.topnav:link, a.topnav:visited {color: #007c72;} /*dark teal */
+a.topnav:hover {color: #707a00; text-decoration: none;} 
+
+
+/* links in page */
+.head_link {
+    font-weight: bold;
+    border-radius: 10px;
+    padding: 3px;
+    text-shadow: 0px 0px 20px #000000;
+    border-style: solid;
+    border-image: linear-gradient(#00000050 -230%, transparent) 5;
+}
+a {text-decoration-line: none;}
+a:link{color: aliceblue;} /* dark teal */
+a:visited{color: rgb(195, 202, 207);} /* dark grey */
+a:hover{color: white;}    /* Dark Green*/
+
+/* #### Headings / text styling #### */
+h1, h2, h3, h4 {
+    font-family: 'Ubuntu', sans-serif;
+}
+
+.sub_heading {
+    font-family: 'Ubuntu', sans-serif;
+    color: #593849; /* purple */
+    font-weight: bold;
+}
+
+/* ### Form / Search  Styling #### */
+
+form {
+    width: 100%;
+}
+
+.search {
+    background:#fff;
+    width: 75%;
+}
+
+.submit::-moz-focus-inner { 
+    border: 0;
+}
+
+
+.submit {
+    font-family: FontAwesome, 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    position:relative;
+    width: 45px;
+    font-size: 14px;
+    
+    left:-5px;
+    background-color: #636263; 
+    color:#d6d3d7;
+    border: 1px solid #000;
+    border-radius: 0 5px 5px 0;   
+    display: inline-block;
+    padding: 10px;
+}
+
+
+input[type="submit"]:hover {
+    background-color: #000;
+}
+
+
+input {
+    font-size: 14px;
+    padding: 10px;
+    display: inline-block;
+    border: 1px solid #000;
+    box-sizing: border-box; 
+}
+
+
+.quicksearch {
+    border-radius: 5px 0 0 5px; 
+    display: inline-block;
+    grid-area: search;
+    width: auto;
+}
+
